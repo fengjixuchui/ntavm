@@ -153,8 +153,8 @@ NTSTATUS PsLookupProcessByProcessName(CHAR* ProcessName, PEPROCESS* Process) {
 	} while (CurrentEntry != SystemProcess);
 	return STATUS_NOT_FOUND;
 }
-//This function causes BSOD upon closing the program in which it obtained the base address to,
-//atleast when attemtping to obtain the executable base address rather than the library base address.
+//This function causes BSOD upon closing the program in which it obtained the base address to
+//if you do experience a BSOD, remove ObfDereferenceObject.
 //NTSTATUS BaseAddressStatus = PsGetModuleBaseAddress(Process, L"user32.dll", &BaseAddress);
 NTSTATUS PsGetModuleBaseAddress(PEPROCESS TargetProcess, LPCWSTR ModuleName, PULONG64 Result) {
 	KeAttachProcess((PKPROCESS)TargetProcess);
